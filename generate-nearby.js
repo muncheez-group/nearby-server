@@ -35,7 +35,7 @@ let generate = (writer, encoding, callback) => {
   }
   write();
 }
-generate(fs.createWriteStream('data.json','utf8', ()=>{
+generate (fs.createWriteStream('data.json','utf8', () => {
   console.log('Finished!');
 }));
 

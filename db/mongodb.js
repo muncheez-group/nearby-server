@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var restaurantSchema = mongoose.Schema({
+let restaurantSchema = mongoose.Schema({
   name: String,
   place_id: { type: Number, unique: true },
   google_rating: Number,
@@ -12,7 +12,7 @@ var restaurantSchema = mongoose.Schema({
   nearby: [String]
 });
 
-let RestaurantModel = mongoose.model('Restaurant', restaurantSchema);
+const RestaurantModel = mongoose.model('Restaurant', restaurantSchema);
 
 // findAll retrieves all stories
 function findAll(callback) {
