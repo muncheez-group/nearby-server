@@ -1,0 +1,4 @@
+./data.json
+/client/dist/bundle.js
+./node_modules/
+webpack.config.js
