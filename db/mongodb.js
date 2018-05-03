@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var restaurantSchema = mongoose.Schema({
+let restaurantSchema = mongoose.Schema({
   name: String,
-  place_id: { type: String, unique: true },
+  place_id: { type: Number, unique: true },
   google_rating: Number,
   zagat_rating: Number,
   photos: [String],
@@ -12,7 +12,7 @@ var restaurantSchema = mongoose.Schema({
   nearby: [String]
 });
 
-var RestaurantModel = mongoose.model('Restaurant', restaurantSchema);
+const RestaurantModel = mongoose.model('Restaurant', restaurantSchema);
 
 // findAll retrieves all stories
 function findAll(callback) {
@@ -28,8 +28,8 @@ function findOne(id, callback) {
 
 // insertOne inserts a restaurant into the db
 function insertOne(restaurant, callback) {
-  console.log('inserting one restaurant');
   RestaurantModel.create(restaurant, callback);
+  console.log('added');
 }
 
 // retrieve many restaurants

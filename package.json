@@ -11,6 +11,7 @@
     "start": "node ./server/index.js",
     "server": "nodemon ./server/index.js",
     "seed": "node ./seed.js",
+    "seed-nearby": "node ./seed-nearby.js",
     "build": "webpack -d --watch",
     "build:prod": "webpack -p",
     "test": "jest",
