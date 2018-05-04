@@ -22,12 +22,13 @@ const generate = (writer, encoding, callback) => {
       i -= 1;
       for (let property in data) {
         if (property === 'photos') {
-          ok = writer.write(`${JSON.stringify(data[property])},`);
+          ok = writer.write(`"${JSON.stringify(data[property])}",`);
         } else if (property === 'nearby') {
-          ok = writer.write(JSON.stringify(data[property]));
-        }
-        else {
+          ok = writer.write(`"${JSON.stringify(data[property])}"`);
+        } else if (property === 'google_rating' || property === 'zagat_rating') {
           ok = writer.write(`${(data[property])},`);
+        } else {
+          ok = writer.write(`${JSON.stringify(data[property])},`);
         }
       }
       writer.write('\n');
