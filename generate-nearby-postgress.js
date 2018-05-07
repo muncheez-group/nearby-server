@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const total = 100;
+const total = 10000000;
 console.log('starting');
 const generate = (writer, encoding, callback) => {
   let i = total;
