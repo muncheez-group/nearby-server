@@ -13,7 +13,6 @@ pool.on('error', (err) => {
 
 let queryPostgres = (req, res) => {
   const placeId = req.params.id;
-  console.log(`GET ${req.url}`);
 
   const results = [];
   pool.query('SELECT * FROM restaurants WHERE place_id = ' + placeId, (err, data) => {
