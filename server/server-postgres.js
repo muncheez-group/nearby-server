@@ -2,8 +2,7 @@
 const Pool = require('pg-pool');
 
 const pool = new Pool({
-  user: 'louis',
-  password: '123',
+  password: '1',
   database: 'nearby'
 });
 
@@ -22,11 +21,8 @@ let queryPostgres = (req, res) => {
       res.status(500);
       console.log(err);
     } else {
-      console.log('restaurant info: ', data);
       const nearbyArr = data.rows[0].nearby;
-      console.log('Nearby Arr: ', nearbyArr);
       results.push(data.rows[0]);
-      console.log('==============',results);
 
       pool.query('SELECT * FROM restaurants WHERE place_id IN ('
       + nearbyArr[0] + ','
@@ -41,25 +37,13 @@ let queryPostgres = (req, res) => {
           res.status(500);
           console.log(err);
         } else {
-          console.log('recommended restaurants:', data);
           results.push(data.rows);
-          console.log(`number of recommended: ${data.length}`);
           res.status(200);
-          console.log('Results Length: ', results.length);
           res.send(results);
         }
       })
     }
   });
 };
-
-const query = (queryText, queryArgs, callback) =>
-  pool.query(queryText, queryArgs)
-    .then((res) => {
-      callback(null, res.rows);
-    })
-    .catch((err) => {
-      callback(err, null);
-    });
 
 module.exports = queryPostgres;
