@@ -1,11 +1,12 @@
+require('newrelic');
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-
-/* Choose database */
-//const query = require('./server-mongo.js')
 const query = require('./server-postgres.js');
+
+const app = express();
+
+// const query = require('./server-mongo.js')
 
 app.listen(3004, () => { console.log('Apateez app listening on port 3004!'); });
 app.use(bodyParser.json());

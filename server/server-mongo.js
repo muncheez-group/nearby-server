@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const db = require('../db/mongodb.js');
+
 const mongoUrlDocker = 'mongodb://database/apateez-nearby';
 const mongoUrl = 'mongodb://localhost/apateez-nearby';
-const db = require('../db/mongodb.js');
+
 
 mongoose.connect(mongoUrl); // mongoose.connect(mongoUrlDocker);
 mongoose.connection.on('connected', () => {
@@ -13,7 +15,7 @@ mongoose.connection.on('error', (err) => {
   mongoose.connect(mongoUrlDocker);
 });
 
-let queryMongo = (req, res) => {
+const queryMongo = (req, res) => {
   const placeId = req.params.id;
 
   const results = [];

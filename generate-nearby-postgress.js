@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const total = 10000000;
 console.log('starting');
-const generate = (writer, encoding, callback) => {
+const generate = (writer) => {
   let i = total;
   const write = () => {
     let ok = true;
@@ -13,14 +13,14 @@ const generate = (writer, encoding, callback) => {
         place_id: i,
         google_rating: ((Math.random() * 4) + 1).toFixed(1),
         zagat_rating: ((Math.random() * 4) + 1).toFixed(1),
-        photos: Array.from({length: 4}, ()=> Math.floor(Math.random() * 100)),
+        photos: Array.from({ length: 4 }, () => Math.floor(Math.random() * 100)),
         neighborhood: faker.address.streetName() + faker.address.citySuffix(),
         price_level: Math.floor(((Math.random() * 4) + 1)),
         types: faker.lorem.word(),
-        nearby: Array.from({length: 6}, ()=> Math.floor(Math.random() * total)),
+        nearby: Array.from({ length: 6 }, () => Math.floor(Math.random() * total)),
       };
       i -= 1;
-      for (let property in data) {
+      for (const property in data) {
         if (property === 'photos') {
           ok = writer.write(`"${JSON.stringify(data[property])}",`);
         } else if (property === 'nearby') {
