@@ -25,7 +25,7 @@ class PhotoCarousel extends React.Component {
       if (index < 5) {
         return (
           <Carousel.Item key={index}>
-            <img src={'https://s3-us-west-1.amazonaws.com/nearby-pics/' + photoID +'.jpg'} />
+            <img className="carouselImage" src={'https://s3-us-west-1.amazonaws.com/nearby-pics/' + photoID + '.jpg'} />
           </Carousel.Item>
         )
       }
