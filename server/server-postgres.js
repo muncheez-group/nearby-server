@@ -48,7 +48,7 @@ const queryPostgres = (req, res) => {
                 console.log(err);
               } else {
                 results.push(data.rows);
-                client.setex(placeId, 60, JSON.stringify(results));
+                client.setex(placeId, 1800, JSON.stringify(results));
                 res.status(200);
                 res.send(results);
               }
@@ -58,8 +58,6 @@ const queryPostgres = (req, res) => {
       });
     }
   })
-
-
 };
 
 module.exports = queryPostgres;
