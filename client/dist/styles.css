@@ -68,6 +68,13 @@
   height: 100%;
 }
 
+.carouselImage {
+  object-fit: cover;
+  width: 215px;
+  min-width: 215px;
+  height: 215px;
+}
+
 .carousel-indicators {
   bottom: -10px;
 }
