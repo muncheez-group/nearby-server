@@ -8,7 +8,10 @@ client.on('error', (err) => {
 });
 
 const pool = new Pool({
-  password: '1',
+  user: 'lhmun',
+  password: '12344321',
+  host: 'nearbydb.cprsvqrewhtt.us-west-1.rds.amazonaws.com',
+  port: '5432',
   database: 'nearby',
 });
 
