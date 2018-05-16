@@ -6,6 +6,7 @@ newrelic.js
 seed.js
 db/mongodb.js
 package-lock.json
+dump.rdb
 
 /.DS_Store
 # Logs
