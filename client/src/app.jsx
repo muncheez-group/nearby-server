@@ -75,3 +75,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('nearby-app'));
+
+export default App;

@@ -1,6 +1,6 @@
 require('newrelic');
 const express = require('express');
-const App = require('../client/src/app.jsx');
+const App = require('../client/dist/app.js').default;
 const bodyParser = require('body-parser');
 const path = require('path');
 const React = require('react');
