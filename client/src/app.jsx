@@ -20,15 +20,10 @@ class App extends React.Component {
   }
 
   _getData() {
-    // console.log('window location.href: ', window.location.href);
-
     var id = window.location.href.split('/')[4];
-    // console.log('getting recommended restaurants for id: ' + id)
-
-    //error handling if id is included in URL
     if (window.location.href.split('/')[4] !== undefined) {
       $.ajax({
-        url: `http://localhost:3004/api/restaurants/${id}/nearby`,
+        url: `http://52.53.171.51:3004/api/restaurants/${id}/nearby`,
         method: "GET",
         success: (data) => {
           this.setState({
