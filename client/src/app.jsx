@@ -19,17 +19,15 @@ class App extends React.Component {
   }
 
   _getData() {
-    // console.log('window location.href: ', window.location.href);
 
     var id = window.location.href.split('/')[4];
-    // console.log('getting recommended restaurants for id: ' + id)
 
-    //error handling if id is included in URL
     if (window.location.href.split('/')[4] !== undefined) {
       $.ajax({
         url: `http://localhost:3004/api/restaurants/${id}/nearby`,
         method: "GET",
         success: (data) => {
+          data = JSON.parse(data);
           this.setState({
             currentRestaurant: data[0],
             nearbyRestaurants: data[1],
@@ -41,6 +39,8 @@ class App extends React.Component {
       })
     } else {
       this.setState({
+        currentRestaurant: {},
+        nearbyRestaurants: [],
         checkID: false
       })
     }
@@ -48,18 +48,15 @@ class App extends React.Component {
   }
 
   _goToRestaurant(id) {
-    console.log('go to restaurant ' + id)
     location.href = '/restaurants/' + id;
   }
 
 	render() {
-    
     let restaurantCards = this.state.nearbyRestaurants.map((num, index) => {
       return (
         <RestaurantCard nearbyRestaurant={this.state.nearbyRestaurants[index]} key={index.toString()} switchRestaurant={this._goToRestaurant.bind(this)} />
       )
     })
-
 
 		return (
 			<div className="nearby-padding">
