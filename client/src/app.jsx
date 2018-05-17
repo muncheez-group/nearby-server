@@ -23,7 +23,7 @@ class App extends React.Component {
     var id = window.location.href.split('/')[4];
     if (window.location.href.split('/')[4] !== undefined) {
       $.ajax({
-        url: `http://localhost:3004/api/restaurants/${id}/nearby`,
+        url: `http://52.53.171.51:3004/api/restaurants/${id}/nearby`,
         method: "GET",
         success: (data) => {
           this.setState({
