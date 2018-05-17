@@ -22,4 +22,4 @@ app.get('/restaurants/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-app.get('/api/restaurants/:id/nearby', query);
+app.get('http://52.53.171.51:3004/api/restaurants/:id/nearby', query);
