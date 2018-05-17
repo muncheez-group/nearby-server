@@ -16,10 +16,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('http://52.53.171.51:3004/restaurants/', express.static(path.join(__dirname, '../client/dist')));
+app.use('/restaurants/', express.static(path.join(__dirname, '../client/dist')));
 
-app.get('http://52.53.171.51:3004/restaurants/:id', (req, res) => {
+app.get('/restaurants/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-app.get('http://52.53.171.51:3004/api/restaurants/:id/nearby', query);
+app.get('/api/restaurants/:id/nearby', query);
