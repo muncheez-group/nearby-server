@@ -17,6 +17,9 @@ app.use((req, res, next) => {
 });
 
 app.use('/restaurants/', express.static(path.join(__dirname, '../client/dist')));
+app.get('/loaderio-c49ed2afcef3746ba9ed136bf940670f', (req, res) => {
+  res.sendFile(path.join(__dirname, '../loaderio-c49ed2afcef3746ba9ed136bf940670f.txt'));
+});
 
 app.get('/restaurants/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
