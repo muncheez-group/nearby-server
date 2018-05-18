@@ -5,6 +5,10 @@ data.json
 seed.js
 db/mongodb.js
 package-lock.json
+dump.rdb
+app.js
+bundle.js
+app-server.js
 
 /.DS_Store
 # Logs
