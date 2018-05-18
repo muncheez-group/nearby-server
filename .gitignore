@@ -2,7 +2,6 @@ node_modules/
 **/bundle.js
 195-Zagat-AllData.json
 data.json
-newrelic.js
 seed.js
 db/mongodb.js
 package-lock.json
