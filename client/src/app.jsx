@@ -14,6 +14,34 @@ class App extends React.Component {
     }
 	}
 
+  componentDidMount() {
+    this._getData();
+  }
+
+  _getData() {
+    var id = window.location.href.split('/')[4];
+    if (window.location.href.split('/')[4] !== undefined) {
+      $.ajax({
+        url: `http://52.53.171.51:3004/api/restaurants/${id}/nearby`,
+        method: "GET",
+        success: (data) => {
+          this.setState({
+            currentRestaurant: data[0],
+            nearbyRestaurants: data[1],
+          })
+        },
+        error: (err) => {
+          console.log('GET Error: ', err)
+        }
+      })
+    } else {
+      this.setState({
+        checkID: false
+      })
+    }
+    
+  }
+  
   _goToRestaurant(id) {
     location.href = '/restaurants/' + id;
   }
