@@ -1,5 +1,4 @@
 node_modules/
-**/bundle.js
 195-Zagat-AllData.json
 data.json
 newrelic.js
@@ -7,9 +6,6 @@ seed.js
 db/mongodb.js
 package-lock.json
 dump.rdb
-app.js
-bundle.js
-app-server.js
 
 /.DS_Store
 # Logs
