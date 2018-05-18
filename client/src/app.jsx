@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RestaurantCard from './components/RestaurantCard.jsx';
-import '../dist/styles.css';
 import Footer from './components/Footer.jsx';
 import $ from 'jquery';
 
@@ -9,8 +8,8 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-      currentRestaurant: {},
-      nearbyRestaurants: [],
+      currentRestaurant: this.props.currentRestaurant || {},
+      nearbyRestaurants: this.props.nearbyRestaurants || [],
       checkID: true
     }
 	}
@@ -42,20 +41,17 @@ class App extends React.Component {
     }
     
   }
-
+  
   _goToRestaurant(id) {
-    console.log('go to restaurant ' + id)
     location.href = '/restaurants/' + id;
   }
 
 	render() {
-    
     let restaurantCards = this.state.nearbyRestaurants.map((num, index) => {
       return (
         <RestaurantCard nearbyRestaurant={this.state.nearbyRestaurants[index]} key={index.toString()} switchRestaurant={this._goToRestaurant.bind(this)} />
       )
     })
-
 
 		return (
 			<div className="nearby-padding">
@@ -69,4 +65,4 @@ class App extends React.Component {
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById('nearby-app'));
+export default App;

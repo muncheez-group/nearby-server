@@ -1,27 +1,46 @@
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+var nodeExternals = require('webpack-node-externals')
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
+// See: https://stackoverflow.com/questions/37788142/webpack-for-back-end
 
-module.exports = {
-  entry: `${SRC_DIR}/app.jsx`,
-  output: {
-    filename: 'bundle.js',
-    path: DIST_DIR
-  },
-  module : {
-    loaders : [
+const common = {
+  context: __dirname + '/client',
+  module: {
+    loaders: [
       {
-        test : /\.jsx?/,
-        include : SRC_DIR,
-        loader : 'babel-loader',      
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
-       }
+          presets: ['react', 'es2015', 'env']
+        },
       },
-      {
-        test: /\.css$/,
-        use: ['style-loader','css-loader']
-      }
-    ]
+    ],
   }
 };
+
+const client = {
+  entry: './client.js',
+  output: {
+    path: DIST_DIR,
+    filename: 'app.js'
+  }
+};
+
+const server = {
+  entry: './server.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: DIST_DIR,
+    filename: 'app-server.js',
+    libraryTarget: 'commonjs-module'
+  }
+};
+
+module.exports = [
+  Object.assign({}, common, client),
+  Object.assign({}, common, server)
+];
