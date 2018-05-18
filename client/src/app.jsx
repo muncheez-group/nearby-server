@@ -5,14 +5,14 @@ import Footer from './components/Footer.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       currentRestaurant: this.props.currentRestaurant || {},
       nearbyRestaurants: this.props.nearbyRestaurants || [],
       checkID: true
     }
-	}
+  }
 
   componentDidMount() {
     this._getData();
@@ -39,30 +39,30 @@ class App extends React.Component {
         checkID: false
       })
     }
-    
+
   }
-  
+
   _goToRestaurant(id) {
     location.href = '/restaurants/' + id;
   }
 
-	render() {
+  render() {
     let restaurantCards = this.state.nearbyRestaurants.map((num, index) => {
       return (
         <RestaurantCard nearbyRestaurant={this.state.nearbyRestaurants[index]} key={index.toString()} switchRestaurant={this._goToRestaurant.bind(this)} />
       )
     })
 
-		return (
-			<div className="nearby-padding">
-				<div className="restaurant-header">Restaurants Near {this.state.currentRestaurant.name ? this.state.currentRestaurant.name : "none"}</div>
+    return (
+      <div className="nearby-padding">
+        <div className="restaurant-header">Restaurants Near {this.state.currentRestaurant.name ? this.state.currentRestaurant.name : "none"}</div>
         <div className="restaurant-cards">
-				{restaurantCards}
+          {restaurantCards}
         </div>
         <Footer />
-			</div>
-		)
-	}
+      </div>
+    )
+  }
 }
 
 export default App;
