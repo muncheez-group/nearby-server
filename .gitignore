@@ -6,7 +6,10 @@ seed.js
 db/mongodb.js
 package-lock.json
 dump.rdb
+<<<<<<< HEAD
 
+=======
+>>>>>>> d38851a335ca28bce089655ce21340ce0de9343e
 
 /.DS_Store
 # Logs
